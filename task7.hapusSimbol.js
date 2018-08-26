@@ -1,18 +1,19 @@
 function hapusSimbol(str) {
-    var chars = '';
-    var text = '';
-    var kamus = 'abcdefghijklmnopqrstuvwxyz0987654321';
-   for (var i = 0; i < str.length; i++) {
-       for (var j = 0; j < kamus.length; j++) {
-           chars = str[i]
-           if (str[i] !== kamus[j]) {
-               chars = ''        
-           }
-           text += chars;
-       }
+//     var chars = '';
+//     var text = '';
+//     var kamus = 'abcdefghijklmnopqrstuvwxyz0987654321';
+//    for (var i = 0; i < str.length; i++) {
+//        for (var j = 0; j < kamus.length; j++) {
+//            chars = str[i]
+//            if (str[i] !== kamus[j]) {
+//                chars = ''        
+//            }
+//            text += chars;
+//        }
        
-   }
-    return text;
+//    }
+//     return text;
+return str.match(/[a-z\w]/gi).join("");
 }
   // TEST CASES
 console.log(hapusSimbol('test%$4aa')); // test4aa
