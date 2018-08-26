@@ -1,49 +1,39 @@
 function highestScore (students) {
-  var obj = {}
-  var names = []
+  var result = {};
+
   for (var i = 0; i < students.length; i++) {
-    //console.log(students[i].class)
-    obj[students[i].class] = 1
-  }
- // console.log(obj)
-  //console.log(Object.keys(obj))
-  var arrayClass = Object.keys(obj);
-  for (var i = 0; i < arrayClass.length; i++) {
-    for (var j = 0; j < students.length; j++) {
-        if (arrayClass[i] === students[j].class) {
-            var tmp = students[j].name
-            var score = students[j].score
-            names.push([tmp, score]);
-        }
-    }
-    obj[arrayClass[i]] = names;
-    names = [];   
-  }
+    //console.log(students[i])
+    var resultProps = Object.keys(result) 
+    var studentScore = students[i].score;
+    var studentClass = students[i].class;
+    var studetName = students[i].name;
 
-
-  //console.log(Object.values(obj)[0])
-  var objValue = Object.values(obj);
-
-  for (var i = 0; i < objValue.length; i++) {
-      // console.log(objValue[i])
-      for (var j = 0; j < objValue[i].length; j++) {
-          console.log(objValue[i][j][1], i, j)
-         if (objValue[i][j][1] > objValue[i][j+1]) {
-             var winner = objValue[i][j]
-             var winnerScore = objValue[i][j][1]
-         } else {
-            var winner = objValue[i][j+1]
-             var winnerScore = objValue[i][j+1]
-         }
-          //var winner = 
-
+    if (resultProps.length === 0) {
+      result[students[i].class] = {
+          name: studetName,
+          score: studentScore
       }
-      obj.winner = winner
-      obj.winnerScore = winnerScore
-  }
+    }
 
- // console.log(Object.keys(obj))
-}
+    for (var j = 0; j < resultProps.length; j++) {      
+      if (result[students[i].class] === undefined) {
+        result[students[i].class] = {
+          name: studetName,
+          score: studentScore
+      } 
+      } else {
+        if (result[students[i].score] > students[i].score ) {
+          result[j].name = students[i].name
+          result[j].score = students[i].score
+        }
+      }
+      }
+    }   
+    console.log(result)
+   
+ }
+
+    
 
 
 
@@ -77,39 +67,39 @@ console.log(highestScore([
 // }
 
 
-// console.log(highestScore([
-//   {
-//     name: 'Alexander',
-//     score: 100,
-//     class: 'foxes'
-//   },
-//   {
-//     name: 'Alisa',
-//     score: 76,
-//     class: 'wolves'
-//   },
-//   {
-//     name: 'Vladimir',
-//     score: 92,
-//     class: 'foxes'
-//   },
-//   {
-//     name: 'Albert',
-//     score: 71,
-//     class: 'wolves'
-//   },
-//   {
-//     name: 'Viktor',
-//     score: 80,
-//     class: 'tigers'
-//   }
-// ]));
+console.log(highestScore([
+  {
+    name: 'Alexander',
+    score: 100,
+    class: 'foxes'
+  },
+  {
+    name: 'Alisa',
+    score: 76,
+    class: 'wolves'
+  },
+  {
+    name: 'Vladimir',
+    score: 92,
+    class: 'foxes'
+  },
+  {
+    name: 'Albert',
+    score: 71,
+    class: 'wolves'
+  },
+  {
+    name: 'Viktor',
+    score: 80,
+    class: 'tigers'
+  }
+]));
 
-// // {
-// //   foxes: { name: 'Alexander', score: 100 },
-// //   wolves: { name: 'Alisa', score: 76 },
-// //   tigers: { name: 'Viktor', score: 80 }
-// // }
+// {
+//   foxes: { name: 'Alexander', score: 100 },
+//   wolves: { name: 'Alisa', score: 76 },
+//   tigers: { name: 'Viktor', score: 80 }
+// }
 
 
-// console.log(highestScore([])); //{}
+console.log(highestScore([])); //{}
