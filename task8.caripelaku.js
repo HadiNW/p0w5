@@ -1,11 +1,9 @@
 function cariPelaku(str) {  
 
-  var character = str.match(/abc/g);
-    var count = 0;
-    for(var i = 0; i < character.length;i++){
-        count++;
+  var character = str.match(/abc/g);   
+    for(var i = 0; i < character.length;i++){       
     }
-return count;
+return i;
 }
 
 // TEST CASES
