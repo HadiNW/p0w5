@@ -29,7 +29,7 @@ function highestScore (students) {
       }
       }
     }   
-    console.log(result)
+    return result
    
  }
 
@@ -102,4 +102,4 @@ console.log(highestScore([
 // }
 
 
-console.log(highestScore([])); //{}
+// console.log(highestScore([])); //{}
